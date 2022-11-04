@@ -4,7 +4,7 @@ Architecture Decisions
 gRPC is a cross-platform protocol that would be good to communicate between mobile and location microservice.  The protobuf format is efficient and compact for transmision over mobile networks.
 
 2) Kafka from Location Microservice to Event Microservice
-Kafka is an asynchronous protocol that can write to Kafka topics quickly and allow processing to continue in the location microservice.  The persistance of the topic allows for resillient architecture to recover from crashes.
+Kafka is an asynchronous protocol that can write to Kafka topics quickly and allow processing to continue in the location microservice.  The persistance of the topic allows for resillient architecture to recover from crashes.  Location Processor microservice will pickup items from Kafka topic asynchronously and write to database to improve performance.
 
 3) Location / Person / Connection REST Microservices
 The REST endpoints in base app will be split into 3 different REST microservices for Location, Person, and Connection.  This seperates the concerns for each endpoint.
