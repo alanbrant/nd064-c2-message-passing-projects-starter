@@ -1,0 +1,1 @@
+docker build -t alanbrant/udaconnect-location-api .
