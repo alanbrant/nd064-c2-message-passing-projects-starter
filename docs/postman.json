@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "88ffa4e6-8063-456b-998b-0b4360627b5f",
+		"name": "udaconnect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "persons/<id>/connection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30011/persons/1/connection?start_date&end_date&distance",
+					"host": [
+						"localhost"
+					],
+					"port": "30011",
+					"path": [
+						"persons",
+						"1",
+						"connection"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": null
+						},
+						{
+							"key": "end_date",
+							"value": null
+						},
+						{
+							"key": "distance",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "locations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30000/locations",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "locations/<id>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30000/locations/1",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"locations",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "persons",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "persons/<id>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30003/persons/1",
+					"host": [
+						"localhost"
+					],
+					"port": "30003",
+					"path": [
+						"persons",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

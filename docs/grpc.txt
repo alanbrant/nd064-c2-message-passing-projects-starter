@@ -1,0 +1,2 @@
+1) Open location-receiver project to app directory.
+2) Run 'python writer.py'

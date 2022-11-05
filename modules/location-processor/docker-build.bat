@@ -1,1 +1,1 @@
-docker build -t alanbrant/udaconnect-location-receiver .
+docker build -t alanbrant/udaconnect-location-processor .

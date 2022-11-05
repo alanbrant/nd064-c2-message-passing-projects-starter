@@ -1,1 +1,1 @@
-docker push alanbrant/udaconnect-location-receiver
+docker push alanbrant/udaconnect-location-processor
