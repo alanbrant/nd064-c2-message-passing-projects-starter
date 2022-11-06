@@ -7,9 +7,6 @@ import location_pb2_grpc
 
 from kafka import KafkaProducer
 
-
-
-
 class LocationServicer(location_pb2_grpc.LocationServiceServicer):
 
     def Create(self, request, context):

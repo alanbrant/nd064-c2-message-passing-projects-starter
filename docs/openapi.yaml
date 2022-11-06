@@ -1,0 +1,258 @@
+openapi: 3.0.3
+info:
+  title: Udaconnect API - OpenAPI 3.0
+  description: Udaconnect API docs
+  contact:
+    email: noreply@alanbrant.com
+  license:
+    name: None
+  version: 1.0.0
+
+servers:
+  - url: https://localhost:30011
+  - url: https://localhost:30002
+  - url: https://localhost:30003
+        
+tags:
+  - name: person
+    description: API for person
+  - name: connection
+    description: API for connection
+  - name: location
+    description: API for location
+
+paths:
+  /persons:
+    get:
+      tags:
+        - person
+      summary: Find Person list
+      description: Returns a list of Persons
+      operationId: getPersons
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonArray'          
+        '404':
+          description: Person not found
+    post:
+      tags:
+        - person
+      summary: Post a Person 
+      description: Posts a Persons
+      operationId: postPerson
+      parameters:
+        - name: person
+          in: query
+          description: person to post
+          required: true
+          schema:
+            $ref: '#/components/schemas/Person' 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'          
+        '404':
+          description: Person not found
+          
+          
+  /persons/{personId}:
+    get:
+      tags:
+        - person
+      summary: Find Person 
+      description: Returns a Persons
+      operationId: getPerson
+      parameters:
+        - name: personId
+          in: path
+          description: ID of person to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'          
+        '404':
+          description: Person not found
+          
+
+  /persons/{personId}/connection:
+    get:
+      tags:
+        - connection
+      summary: Find connections by person
+      description: Returns a list of connections by person
+      operationId: getConnctionsPersontById
+      parameters:
+        - name: personId
+          in: path
+          description: ID of person
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: start_date
+          in: query
+          description: Start date
+          required: true
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          description: End date
+          required: true
+          schema:
+            type: string
+        - name: distance
+          in: query
+          description: Distance
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionArray'          
+        '400':
+          description: Invalid ID supplied
+
+  /locations:
+    get:
+      tags:
+        - location
+      summary: Find Location list
+      description: Returns a list of Locations
+      operationId: getLocations
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationArray'          
+        '404':
+          description: Location not found
+    post:
+      tags:
+        - location
+      summary: Post a Location 
+      description: Posts a Location
+      operationId: postLocation
+      parameters:
+        - name: location
+          in: query
+          description: location to post
+          required: true
+          schema:
+            $ref: '#/components/schemas/Location' 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'          
+        '404':
+          description: Location not found
+          
+  /locations/{locationId}:
+    get:
+      tags:
+        - location
+      summary: Find Location 
+      description: Returns a Location
+      operationId: getLocation
+      parameters:
+        - name: locationId
+          in: path
+          description: ID of location to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'          
+        '404':
+          description: Location not found
+
+components:
+  schemas:
+    Person:
+      type: object
+      properties:
+        person_id:
+          type: integer
+          format: int64
+          example: 100000
+        first_name:
+          type: string
+          example: 100
+        last_name:
+          type: string
+          example: 100
+        company_name:
+          type: string
+          example: Initech
+    PersonArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Person'
+    Connection:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/Location'
+        person:
+          $ref: '#/components/schemas/Person'
+    ConnectionArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Connection'
+    Location:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        person_id:
+          type: integer
+          format: int64
+          example: 100000
+        latitude:
+          type: string
+          example: 100
+        logitude:
+          type: string
+          example: 100
+        creation_time:
+          type: string
+          example: Jan 1, 1980
+    LocationArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Location'
+          
